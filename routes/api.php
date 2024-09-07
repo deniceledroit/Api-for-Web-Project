@@ -15,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::resource('booking',\App\Http\Controllers\BookingController::class);
+    Route::resource('customer',\App\Http\Controllers\CustomerController::class);
+    Route::resource('car',\App\Http\Controllers\CarController::class);
+    Route::resource('user',\App\Http\Controllers\UserController::class);
 });
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);

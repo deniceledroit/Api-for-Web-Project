@@ -11,6 +11,7 @@ use App\Models\Customer;
 use App\Models\Dammage;
 use App\Models\DammageType;
 use App\Models\Role;
+use App\Models\User;
 use Database\Factories\CarFactory;
 use Database\Factories\CustomerFactory;
 use Illuminate\Database\Seeder;
@@ -40,7 +41,8 @@ class DatabaseSeeder extends Seeder
         Role::factory()->create([
             'label'=>'seven-controller'
         ]);
-        \App\Models\User::factory(6)->create();
+        User::factory()->create(['role_id'=>'1','name'=>'User SIO','email'=>"test@sio.fr"]);
+        User::factory(6)->create();
         Car::factory(10)->create();
         Customer::factory(10)->create();
         Controle::factory(20)->create();
